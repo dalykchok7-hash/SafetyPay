@@ -1,6 +1,6 @@
-# Child Reward/E-commerce System
+# School/College E-commerce Platform for Children
 
-This project appears to be a web-based system designed to facilitate interactions between children, parents, and partners (likely vendors or service providers), possibly centered around a reward or e-commerce model for children. Parents can manage child accounts and recharge balances, children can browse articles and make "purchases," and partners can manage the orders placed by children. An administrator interface likely oversees the entire system.
+This project is a web-based platform designed to enable children to make purchases from companies affiliated with their school or college. The system allows parents to supervise their children's spending by checking transaction histories and consumption details. It facilitates interactions between children, their parents, and partner companies (vendors/service providers). An administrator interface oversees the entire system operations.
 
 ## Features
 
