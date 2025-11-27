@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+:root {
+    --primary: #4361ee;
+    --secondary: #3f37c9;
+    --accent: #4895ef;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --success: #4cc9f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-right: 0.5rem;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.logo-text span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a i {
+    margin-right: 0.5rem;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.auth-buttons .btn {
+    margin-left: 1rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-login {
+    color: var(--dark);
+    border: 1px solid #ddd;
+}
+
+.btn-signup {
+    background-color: var(--primary);
+    color: white;
+    border: 1px solid var(--primary);
+}
+
+.btn-login:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-signup:hover {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 6rem 5% 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-image: url('https://illustrations.popsy.co/amber/digital-nomad.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    opacity: 0.1;
+}
+
+.hero-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons .btn {
+    padding: 0.9rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: white;
+    color: var(--primary);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-stores {
+    display: flex;
+    gap: 1rem;
+}
+
+.app-store-btn {
+    height: 45px;
+    transition: transform 0.3s;
+}
+
+.app-store-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* How It Works */
+.how-it-works {
+    padding: 5rem 5%;
+    background-color: white;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.section-title p {
+    color: #6c757d;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    counter-reset: step-counter;
+}
+
+.step-card {
+    background-color: var(--light);
+    border-radius: 15px;
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.step-card::before {
+    counter-increment: step-counter;
+    content: counter(step-counter);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(67, 97, 238, 0.1);
+    line-height: 1;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.step-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+/* Partners Section */
+.partners {
+    padding: 4rem 5%;
+    background-color: var(--light);
+}
+
+.partners-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.partner-logo {
+    height: 50px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    filter: grayscale(100%);
+}
+
+.partner-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* Features Section */
+.features {
+    padding: 5rem 5%;
+    background-color: white;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: var(--light);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+.testimonials .section-title h2,
+.testimonials .section-title p {
+    color: white;
+}
+
+.testimonials .section-title p {
+    opacity: 0.9;
+}
+
+.testimonial-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    padding: 2rem 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonial-card {
+    min-width: 350px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    scroll-snap-align: start;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.testimonial-text::before {
+    content: '"';
+    font-size: 4rem;
+    position: absolute;
+    top: -1.5rem;
+    left: -1rem;
+    opacity: 0.2;
+    line-height: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.author-info h4 {
+    margin-bottom: 0.2rem;
+}
+
+.author-info p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* CTA Section */
+.cta {
+    padding: 5rem 5%;
+    background-color: white;
+    text-align: center;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(67, 97, 238, 0.2);
+}
+
+.cta-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-card p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 4rem 5% 2rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+}
+
+.footer-about {
+    grid-column: 1 / -1;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo-icon {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-right: 0.5rem;
+}
+
+.footer-logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-about p {
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.footer-links h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.footer-links h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.footer-contact i {
+    margin-right: 0.8rem;
+    color: var(--accent);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 3rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero::before {
+        opacity: 0.05;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links, .auth-buttons {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero {
+        padding: 5rem 5% 4rem;
+        text-align: center;
+    }
+    
+    .hero::before {
+        display: none;
+    }
+    
+    .hero-content {
+        margin: 0 auto;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-wallet logo-icon"></i>
+                <span class="logo-text">Safety<span>Pay</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#how-it-works"><i class="fas fa-play-circle"></i> Fonctionnement</a></li>
+                <li><a href="#partners"><i class="fas fa-store"></i> Commerces</a></li>
+                <li><a href="#features"><i class="fas fa-star"></i> Avantages</a></li>
+                <li><a href="#testimonials"><i class="fas fa-comment"></i> Témoignages</a></li>
+            </ul>
+            
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Connexion</a>
+                <a href="signup.html" class="btn btn-signup">Inscription</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Le budget des ados, sous votre contrôle</h1>
+            <p>SafetyPay révolutionne la façon dont vos enfants dépensent leur argent. Rechargez leur budget, suivez leurs dépenses en temps réel et restez serein.</p>
+            
+            <div class="hero-buttons">
+                <a href="signup.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Commencer maintenant
+                </a>
+                <a href="#how-it-works" class="btn btn-secondary">
+                    <i class="fas fa-play-circle"></i> Voir comment ça marche
+                </a>
+            </div>
+            
+            <div class="app-stores">
+                <a href="#"><img src="https://via.placeholder.com/150x45?text=App+Store" alt="App Store" class="app-store-btn"></a>
+                <a href="#"><img src="https://via.placeholder.com/150x45?text=Google+Play" alt="Google Play" class="app-store-btn"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Simple, sécurisé et efficace</h2>
+                <p>Découvrez comment SafetyPay simplifie la gestion de l'argent de poche en 3 étapes</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Rechargez le budget</h3>
+                    <p>Depuis votre application, créditez le porte-monnaie virtuel de votre enfant en quelques secondes. Fixez des limites et des plafonds de dépense.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3>Paiement par QR Code</h3>
+                    <p>Votre enfant scanne le QR Code chez nos commerces partenaires. Le montant est débité instantanément de son solde, sans argent liquide.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Suivi en temps réel</h3>
+                    <p>Recevez des notifications pour chaque transaction et consultez l'historique détaillé des dépenses, avec lieux, montants et photos des reçus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners" id="partners">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Nos commerces partenaires</h2>
+                <p>Vos enfants peuvent utiliser SafetyPay dans ces établissements et bien d'autres</p>
+            </div>
+            
+            <div class="partners-logos">
+                <img src="https://via.placeholder.com/150x60?text=Café+Paris" alt="Café Paris" class="partner-logo">
+                <img src="https://via.placeholder.com/150x60?text=Boulangerie" alt="Boulangerie" class="partner-logo">
+                <img src="https://via.placeholder.com/150x60?text=Librairie" alt="Librairie" class="partner-logo">
+                <img src="https://via.placeholder.com/150x60?text=Fast+Food" alt="Fast Food" class="partner-logo">
+                <img src="https://via.placeholder.com/150x60?text=Cinéma" alt="Cinéma" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Les avantages FamilyPay</h2>
+                <p>Découvrez pourquoi des milliers de familles nous font confiance</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Sécurité maximale</h3>
+                    <p>Transactions chiffrées, double authentification et plafonds de dépense configurables pour une utilisation en toute sérénité.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Alertes instantanées</h3>
+                    <p>Recevez une notification à chaque transaction effectuée par votre enfant, avec le montant et le lieu de la dépense.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>Éducation financière</h3>
+                    <p>Apprenez à vos enfants à gérer un budget avec des outils visuels et des statistiques simples à comprendre.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Contrôle parental</h3>
+                    <p>Définissez des limites par jour/semaine/mois, bloquez certains commerces ou catégories de dépenses.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Historique détaillé</h3>
+                    <p>Consultez l'ensemble des transactions avec photos des tickets de caisse pour une transparence totale.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Pas de frais cachés</h3>
+                    <p>FamilyPay est gratuit pour les parents. Seuls les commerçants paient une petite commission sur les transactions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Ils utilisent FamilyPay</h2>
+                <p>Découvrez ce que les familles et commerçants pensent de notre solution</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">FamilyPay a changé notre façon de gérer l'argent de poche. Plus besoin de donner de l'argent liquide, je peux recharger à distance et voir exactement où et quand mes enfants dépensent.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Client" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sophie Martin</h4>
+                            <p>Maman de Léa, 14 ans</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">En tant que commerçant, FamilyPay m'a permis d'attirer une nouvelle clientèle jeune. Les transactions sont sécurisées et je reçois le paiement instantanément sur mon compte.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Pierre Dubois</h4>
+                            <p>Gérant de café à Lyon</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Avant FamilyPay, je perdais toujours mon argent ou je ne savais pas combien il me restait. Maintenant, je peux payer avec mon téléphone et mes parents peuvent me recharger en un clic.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Client" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Emma Laurent</h4>
+                            <p>15 ans, utilisatrice FamilyPay</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="section-container">
+            <div class="cta-card">
+                <h2>Prêt à simplifier la gestion de l'argent de poche ?</h2>
+                <p>Rejoignez des milliers de familles qui utilisent FamilyPay pour une gestion sereine du budget de leurs enfants.</p>
+                <a href="signup.html" class="btn btn-primary" style="padding: 1rem 2.5rem;">
+                    <i class="fas fa-user-plus"></i> Créer un compte gratuit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="index.html" class="footer-logo">
+                    <i class="fas fa-wallet footer-logo-icon"></i>
+                    <span class="footer-logo-text">FamilyPay</span>
+                </a>
+                <p>La solution innovante pour gérer le budget des adolescents en toute simplicité et transparence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Pour les parents</h3>
+                <ul>
+                    <li><a href="#">Fonctionnalités</a></li>
+                    <li><a href="#">Tarifs</a></li>
+                    <li><a href="#">Télécharger l'app</a></li>
+                    <li><a href="#">Guide d'utilisation</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Pour les ados</h3>
+                <ul>
+                    <li><a href="#">Comment ça marche</a></li>
+                    <li><a href="#">Trouver un commerce</a></li>
+                    <li><a href="#">Gérer son budget</a></li>
+                    <li><a href="#">Sécurité</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Commerçants</h3>
+                <ul>
+                    <li><a href="#">Devenir partenaire</a></li>
+                    <li><a href="#">Tarifs professionnels</a></li>
+                    <li><a href="#">Kit d'installation</a></li>
+                    <li><a href="#">Espace pro</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Rue de l'Innovation, 75000 Paris</p>
+                <p><i class="fas fa-phone-alt"></i> +33 1 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contact@familypay.fr</p>
+                <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 FamilyPay. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">CGU</a> | <a href="#">Politique de confidentialité</a></p>
+        </div>
+    </footer>
+    <script>
+        
+        // Menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    const isNavVisible = navLinks.style.display === 'flex';
+                    
+                    navLinks.style.display = isNavVisible ? 'none' : 'flex';
+                    authButtons.style.display = isNavVisible ? 'none' : 'flex';
+                    
+                    // Animation pour le menu
+                    if (!isNavVisible) {
+                        navLinks.style.animation = 'fadeIn 0.3s ease-out';
+                        authButtons.style.animation = 'fadeIn 0.3s ease-out';
+                    }
+                });
+            }
+            
+            // Fermer le menu quand on clique sur un lien
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.style.display = 'none';
+                    authButtons.style.display = 'none';
+                });
+            });
+            
+            // Animation au scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.step-card, .feature-card, .testimonial-card');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Initial state for animation
+            document.querySelectorAll('.step-card, .feature-card, .testimonial-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Trigger on load for elements already in view
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
